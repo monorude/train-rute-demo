@@ -7,8 +7,15 @@
 <body>
   <h1>乗換検索デモ</h1>
 
-  <label>出発駅: <input id="start" type="text"></label>
-  <label>到着駅: <input id="goal" type="text"></label>
+<label>出発駅:
+  <input id="start" list="stationsList" type="text">
+</label>
+<label>到着駅:
+  <input id="goal" list="stationsList" type="text">
+</label>
+
+<datalist id="stationsList"></datalist>
+
   <button id="searchBtn">検索</button>
 
   <h2>結果</h2>
