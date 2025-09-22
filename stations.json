@@ -1,9 +1,9 @@
 [
     {
     "id": "R1",
-    "name": "紅",
-    "name_kana": "くれない",
-    "name_en": "Kurenai",
+    "name": "X",
+    "name_kana": "X",
+    "name_en": "X",
     "lines": ["R1"],
     "express_stop": { "R": true },
     "neighbors": [
@@ -14,9 +14,9 @@
   },
     {
     "id": "R2",
-    "name": "朱雀",
-    "name_kana": "すざく",
-    "name_en": "Suzaku",
+    "name": "Y",
+    "name_kana": "Y",
+    "name_en": "Y",
     "lines": ["R2"],
     "express_stop": { "R": false },
     "neighbors": [
@@ -27,9 +27,9 @@
   },
   {
     "id": "R3",
-    "name": "真紅",
-    "name_kana": "しんく",
-    "name_en": "Shinku",
+    "name": "Z",
+    "name_kana": "Z",
+    "name_en": "Z",
     "lines": ["R3"],
     "express_stop": { "R": false },
     "neighbors": [
@@ -40,9 +40,9 @@
   },
   {
     "id": "X1",
-    "name": "紫紺",
-    "name_kana": "しこん",
-    "name_en": "Shikon",
+    "name": "XX",
+    "name_kana": "XX",
+    "name_en": "XX",
     "lines": ["R4", "B2"],
     "express_stop": { "R": true, "B": false },
     "neighbors": [
@@ -57,9 +57,9 @@
   }
     {
     "id": "B1",
-    "name": "垂水",
-    "name_kana": "たれみず",
-    "name_en": "Taremizu",
+    "name": "XY",
+    "name_kana": "XY",
+    "name_en": "XY",
     "lines": ["B1"],
     "express_stop": { "B": false },
     "neighbors": [
