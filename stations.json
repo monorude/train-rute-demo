@@ -54,7 +54,7 @@
       {"from": "R4", "to": "B2", "time": 5},
       {"from": "B2", "to": "R4", "time": 5}
     ]
-  }
+  },
     {
     "id": "B1",
     "name": "XY",
