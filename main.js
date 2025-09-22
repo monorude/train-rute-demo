@@ -5,14 +5,51 @@ fetch("stations.json")
   .then(res => res.json())
   .then(data => { stations = data; });
 
-// 探索ボタン
+// JSON読み込み後に候補を追加
+fetch("stations.json")
+  .then(res => res.json())
+  .then(data => {
+    stations = data;
+    const list = document.getElementById("stationsList");
+    stations.forEach(st => {
+      const option = document.createElement("option");
+      option.value = st.name; // 駅名を候補に
+      list.appendChild(option);
+    });
+  });
+
+
+function sanitizeInput(input) {
+  // 記号を禁止
+  if (/[\.\(\)]/.test(input)) return null;
+  // 駅名リストに存在するか確認
+  return stations.find(s => s.name === input) ? input : null;
+}
+
+function formatResult(path) {
+  if (path.error) return path.error;
+
+  const names = path.path.map(id => {
+    const st = stations.find(s => s.id === id);
+    return st ? st.name : id;
+  });
+
+  return `所要時間: ${path.distance}分\n経路: ${names.join(" → ")}`;
+}
+
 document.getElementById("searchBtn").addEventListener("click", () => {
-  const startName = document.getElementById("start").value;
-  const goalName = document.getElementById("goal").value;
+  const startName = sanitizeInput(document.getElementById("start").value);
+  const goalName = sanitizeInput(document.getElementById("goal").value);
+
+  if (!startName || !goalName) {
+    document.getElementById("result").textContent = "入力が不正です";
+    return;
+  }
 
   const path = searchRoute(startName, goalName);
-  document.getElementById("result").textContent = JSON.stringify(path, null, 2);
+  document.getElementById("result").textContent = formatResult(path);
 });
+
 
 // Dijkstra法（最短時間を探索）
 function searchRoute(startName, goalName) {
