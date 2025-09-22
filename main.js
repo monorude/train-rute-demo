@@ -1,32 +1,9 @@
 let stations = [];
 
-//aa
 // JSONデータを読み込む
-fetch("./stations.json")
-  .then(response => {
-    if (!response.ok) {
-      throw new Error("HTTP error " + response.status);
-    }
-    return response.json();
-  })
-  .then(data => {
-    console.log("Loaded stations:", data);
-    stations = data; // グローバル変数に格納
-  })
-  .catch(err => {
-    console.error("Failed to load stations.json:", err);
-  });
-
-
-function findStationByName(input) {
-  const normalized = input.trim().toLowerCase();
-  return stations.find(s =>
-    s.name.toLowerCase() === normalized ||
-    s.name_en.toLowerCase() === normalized ||
-    s.name_kana === normalized
-  );
-}
-
+fetch("stations.json")
+  .then(res => res.json())
+  .then(data => { stations = data; });
 
 // 探索ボタン
 document.getElementById("searchBtn").addEventListener("click", () => {
@@ -39,15 +16,11 @@ document.getElementById("searchBtn").addEventListener("click", () => {
 
 // Dijkstra法（最短時間を探索）
 function searchRoute(startName, goalName) {
-  const startStation = findStationByName(startName);
-  const goalStation = findStationByName(goalName);
+  // 駅名から駅オブジェクトを探す
+  const start = stations.find(s => s.name === startName);
+  const goal = stations.find(s => s.name === goalName);
+  if (!start || !goal) return { error: "駅が見つかりません" };
 
-  if (!startStation || !goalStation) {
-    return { error: "駅が見つかりません" };
-  }
-
-  const start = startStation.id;
-  const goal = goalStation.id;
   // 優先度付きキュー代わりに配列を使う（小規模ならOK）
   const dist = {};
   const prev = {};
