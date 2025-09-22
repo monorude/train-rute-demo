@@ -1,12 +1,21 @@
 let stations = [];
 
 // JSONデータを読み込む
-fetch("stations.json")
-  .then(res => res.json())
+fetch("./stations.json")
+  .then(response => {
+    if (!response.ok) {
+      throw new Error("HTTP error " + response.status);
+    }
+    return response.json();
+  })
   .then(data => {
-    stations = data;
-    document.getElementById("searchBtn").disabled = false; // 読み込み完了までボタン無効
+    console.log("Loaded stations:", data);
+    stations = data; // グローバル変数に格納
+  })
+  .catch(err => {
+    console.error("Failed to load stations.json:", err);
   });
+
 
 function findStationByName(input) {
   const normalized = input.trim().toLowerCase();
