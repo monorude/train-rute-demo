@@ -61,10 +61,10 @@
     "name_kana": "XY",
     "name_en": "XY",
     "lines": ["B1"],
-    "express_stop": { "B": false },
+    "express_stop": { "R": false },
     "neighbors": [
-      {"to": "X1", "time": 2},
+      {"to": "X1", "time": 2}
     ],
     "transfers": []
-  },
+  }
 ]
