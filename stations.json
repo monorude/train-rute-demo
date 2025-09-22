@@ -1,0 +1,70 @@
+[
+    {
+    "id": "R1",
+    "name": "紅",
+    "name_kana": "くれない",
+    "name_en": "Kurenai",
+    "lines": ["R1"],
+    "express_stop": { "R": true },
+    "neighbors": [
+      {"to": "R2", "time": 2},
+      {"to": "X1", "time": 4}
+    ],
+    "transfers": []
+  },
+    {
+    "id": "R2",
+    "name": "朱雀",
+    "name_kana": "すざく",
+    "name_en": "Suzaku",
+    "lines": ["R2"],
+    "express_stop": { "R": false },
+    "neighbors": [
+      {"to": "R1", "time": 2},
+      {"to": "R3", "time": 2}
+    ],
+    "transfers": []
+  },
+  {
+    "id": "R3",
+    "name": "真紅",
+    "name_kana": "しんく",
+    "name_en": "Shinku",
+    "lines": ["R3"],
+    "express_stop": { "R": false },
+    "neighbors": [
+      {"to": "R2", "time": 2},
+      {"to": "X1", "time": 2}
+    ],
+    "transfers": []
+  },
+  {
+    "id": "X1",
+    "name": "紫紺",
+    "name_kana": "しこん",
+    "name_en": "Shikon",
+    "lines": ["R4", "B2"],
+    "express_stop": { "R": true, "B": false },
+    "neighbors": [
+      {"to": "R1", "time": 4},
+      {"to": "B1", "time": 2},
+      {"to": "R3", "time": 2}
+    ],
+    "transfers": [
+      {"from": "R4", "to": "B2", "time": 5},
+      {"from": "B2", "to": "R4", "time": 5}
+    ]
+  }
+    {
+    "id": "B1",
+    "name": "垂水",
+    "name_kana": "たれみず",
+    "name_en": "Taremizu",
+    "lines": ["B1"],
+    "express_stop": { "B": false },
+    "neighbors": [
+      {"to": "X1", "time": 2},
+    ],
+    "transfers": []
+  },
+]
