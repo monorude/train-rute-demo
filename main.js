@@ -1,5 +1,6 @@
 let stations = [];
 
+//aa
 // JSONデータを読み込む
 fetch("./stations.json")
   .then(response => {
