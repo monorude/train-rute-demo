@@ -3,7 +3,20 @@ let stations = [];
 // JSONデータを読み込む
 fetch("stations.json")
   .then(res => res.json())
-  .then(data => { stations = data; });
+  .then(data => {
+    stations = data;
+    document.getElementById("searchBtn").disabled = false; // 読み込み完了までボタン無効
+  });
+
+function findStationByName(input) {
+  const normalized = input.trim().toLowerCase();
+  return stations.find(s =>
+    s.name.toLowerCase() === normalized ||
+    s.name_en.toLowerCase() === normalized ||
+    s.name_kana === normalized
+  );
+}
+
 
 // 探索ボタン
 document.getElementById("searchBtn").addEventListener("click", () => {
@@ -16,11 +29,15 @@ document.getElementById("searchBtn").addEventListener("click", () => {
 
 // Dijkstra法（最短時間を探索）
 function searchRoute(startName, goalName) {
-  // 駅名から駅オブジェクトを探す
-  const start = stations.find(s => s.name === startName);
-  const goal = stations.find(s => s.name === goalName);
-  if (!start || !goal) return { error: "駅が見つかりません" };
+  const startStation = findStationByName(startName);
+  const goalStation = findStationByName(goalName);
 
+  if (!startStation || !goalStation) {
+    return { error: "駅が見つかりません" };
+  }
+
+  const start = startStation.id;
+  const goal = goalStation.id;
   // 優先度付きキュー代わりに配列を使う（小規模ならOK）
   const dist = {};
   const prev = {};
