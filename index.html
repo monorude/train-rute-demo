@@ -26,10 +26,12 @@
   <h1>乗換検索デモ</h1>
   <label for="from">出発駅:</label>
   <input type="text" id="from" autocomplete="off">
+  <input id="from" type="text" maxlength="100" pattern="^[\u3000-\u303F\u3040-\u309F\u30A0-\u30FF\u4E00-\u9FFFA-Za-z0-9 _-]+$">
   <div id="from-suggestions" class="suggestions"></div>
   <br><br>
   <label for="to">到着駅:</label>
   <input type="text" id="to" autocomplete="off">
+  <input id="from" type="text" maxlength="100" pattern="^[\u3000-\u303F\u3040-\u309F\u30A0-\u30FF\u4E00-\u9FFFA-Za-z0-9 _-]+$">
   <div id="to-suggestions" class="suggestions"></div>
   
   <button id="search">検索</button>
