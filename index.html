@@ -3,24 +3,39 @@
 <head>
   <meta charset="UTF-8">
   <title>乗換検索デモ</title>
+  <style>
+    body { font-family: sans-serif; margin: 20px; }
+    .suggestions {
+      border: 1px solid #ccc;
+      max-height: 120px;
+      overflow-y: auto;
+      position: absolute;
+      background: white;
+      width: 200px;
+    }
+    .suggestion {
+      padding: 4px;
+      cursor: pointer;
+    }
+    .suggestion:hover {
+      background: #f0f0f0;
+    }
+  </style>
 </head>
 <body>
   <h1>乗換検索デモ</h1>
+  <label for="from">出発駅:</label>
+  <input type="text" id="from" autocomplete="off">
+  <div id="from-suggestions" class="suggestions"></div>
+  <br><br>
+  <label for="to">到着駅:</label>
+  <input type="text" id="to" autocomplete="off">
+  <div id="to-suggestions" class="suggestions"></div>
+  
+  <button id="search">検索</button>
+  
+  <pre id="output"></pre>
 
-<label>出発駅:
-  <input id="start" list="stationsList" type="text">
-</label>
-<label>到着駅:
-  <input id="goal" list="stationsList" type="text">
-</label>
-
-<datalist id="stationsList"></datalist>
-
-  <button id="searchBtn">検索</button>
-
-  <h2>結果</h2>
-  <pre id="result"></pre>
-
-  <script src="main.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
