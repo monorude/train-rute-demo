@@ -44,8 +44,16 @@ setupAutocomplete("to", "to-suggestions");
 
 // デモ検索
 document.getElementById("search").addEventListener("click", () => {
-  const from = document.getElementById("from").value;
-  const to = document.getElementById("to").value;
+  const from = document.getElementById("from").value.trim();
+  const to = document.getElementById("to").value.trim();
 
+  // 入力値バリデーション
+  if (!stations.includes(from) || !stations.includes(to)) {
+    document.getElementById("output").textContent = "エラー: 駅名が正しくありません。";
+    return;
+  }
+
+  // textContent を使うことで XSS 防止
   document.getElementById("output").textContent = `検索: ${from} → ${to}`;
 });
+
